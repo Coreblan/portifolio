@@ -6,202 +6,53 @@
     <title>Portfólio - Blan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* CSS Otimizado (versão minimalista) */
         :root {
-            --neon-azul: #00ffff;
-            --neon-azul-claro: #66ffff;
-            --fundo-amoled: #000000;
-            --cor-texto: #e0e0e0;
-            --cor-destaque: #1a1a1a;
+            --neon: #ff00ff;
+            --bg: #000;
+            --text: #eee;
         }
 
-        body { 
-            font-family: 'Arial', sans-serif; 
-            background: var(--fundo-amoled); 
-            color: var(--cor-texto);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0; 
-        }
-
-        header { 
-            background: var(--fundo-amoled);
-            padding: 15px;
-            border-bottom: 2px solid var(--neon-azul);
-            box-shadow: 0 0 25px var(--neon-azul-claro);
-        }
-
-        .container { 
-            padding: 20px; 
-            max-width: 800px; 
-            margin: 100px auto 0 auto;
-        }
-
-        .section { 
-            margin-bottom: 30px;
-            background: var(--cor-destaque);
-            border: 1px solid var(--neon-azul);
-            box-shadow: 0 0 12px var(--neon-azul-claro);
-        }
-
-        h1, h2 {
-            color: var(--neon-azul);
-            text-shadow: 0 0 8px var(--neon-azul-claro);
-        }
-
-        h1 {
-            font-size: 2em;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            margin: 0 0 15px 0;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border: 2px solid var(--neon-azul);
-            box-shadow: 0 0 25px var(--neon-azul-claro);
-        }
-
-        /* Ajustes no QR Code */
-        .qr-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .qr-code {
-            width: 160px;
-            border: 2px solid var(--neon-azul);
-            padding: 8px;
-            background: white;
-        }
-
-        .qr-container p {
-            font-size: 0.85em;
-            margin: 10px 0 0 0;
-            color: var(--neon-azul);
-        }
-
-        /* Ajustes de Tipografia */
         body {
-            font-size: 16px;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        li, p {
-            font-size: 0.95em;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Ícones Neon Azul */
-        .social-icon {
-            color: var(--neon-azul);
-            transition: all 0.3s ease;
-            font-size: 1.8em;
+        .game-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            background: var(--neon);
+            color: #000;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        .social-icon:hover {
-            color: var(--neon-azul-claro);
-            text-shadow: 0 0 15px var(--neon-azul-claro);
-        }
-
-        /* Botões Ajustados */
-        .neon-button {
-            border-color: var(--neon-azul);
-            color: var(--neon-azul);
-            margin: 10px 0;
-            font-size: 0.9em;
-        }
-
-        .neon-button:hover {
-            background: var(--neon-azul);
-            color: var(--fundo-amoled);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin-top: 80px;
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 1.6em;
-            }
-            
-            h2 {
-                font-size: 1.3em;
-            }
-            
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .qr-code {
-                width: 140px;
-            }
-        }
-
-        /* Melhoria na Lista de Músicas */
-        .music-list {
-            padding-left: 20px;
-        }
-
-        .music-list li {
-            margin-bottom: 10px;
-            padding: 8px;
-            break-inside: avoid-column;
-        }
-
-        /* Layout de Contato Corrigido */
-        .contact-section {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Victor Manuel Nunes (Blan)</h1>
-        <p>Artista Digital ✦ Editor ✦ Compositor</p>
-    </header>
+    <!-- Conteúdo do portfólio aqui -->
 
-    <div class="container">
-        <img src="blan-perfil.jpg" alt="Foto de Blan" class="profile-pic">
+    <a href="game.html" class="game-link" aria-label="Jogar Mini Game">
+        <i class="fas fa-gamepad"></i>
+    </a>
 
-        <!-- Seções mantidas com ajustes de espaçamento -->
-        <div class="section">
-            <h2>Sobre Mim</h2>
-            <p>[Seu texto sobre aqui]</p>
-        </div>
-
-        <!-- Seção de Contato Revisada -->
-        <div class="section contact-section">
-            <div class="qr-container">
-                <img src="qrcode-whatsapp.png" alt="QR Code WhatsApp" class="qr-code">
-                <p>Escaneie para contato direto</p>
-            </div>
-            
-            <div class="contact-info">
-                <h2>Contato</h2>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/core_blan" target="_blank" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="mailto:victormanoel1821698@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://zaplink.app/page/5181ys" target="_blank" class="social-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <!-- Rodapé mantido com ajustes -->
-    </footer>
+    <!-- Scripts Otimizados -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.min.js"></script>
+    <script defer src="game.js"></script>
 </body>
-    </html>
+</html>
