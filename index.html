@@ -4,103 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Blan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --cor-principal: #ff00ff;
+            --cor-fundo: #111;
+            --cor-texto: #eee;
+            --cor-destaque: #1a1a1a;
+            --neon-rosa: #ff00ff;
+            --neon-rosa-claro: #ff66ff;
+        }
+
         body { 
-            font-family: Arial, sans-serif; 
-            background: #111; 
-            color: #eee; 
+            font-family: 'Arial', sans-serif; 
+            background: var(--cor-fundo); 
+            color: var(--cor-texto); 
             margin: 0; 
             padding: 0; 
+            scroll-behavior: smooth;
         }
+
         header { 
             background: #222; 
             padding: 20px; 
             text-align: center; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000;
+            box-shadow: 0 0 20px var(--neon-rosa-claro);
+            border-bottom: 2px solid var(--neon-rosa);
         }
-        header h1 { 
-            margin: 0; 
-            color: #00ffff; 
+
+        header h1 {
+            margin: 0;
+            color: var(--neon-rosa);
+            text-shadow: 0 0 10px var(--neon-rosa-claro);
+            font-size: 2.5em;
+            letter-spacing: 2px;
         }
+
         .container { 
             padding: 30px; 
             max-width: 800px; 
-            margin: auto; 
+            margin: 140px auto 0 auto; 
         }
+
         .section { 
             margin-bottom: 40px; 
-            background: #1a1a1a;
+            background: var(--cor-destaque);
             padding: 20px;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            border: 1px solid var(--neon-rosa);
+            box-shadow: 0 0 15px var(--neon-rosa-claro);
+            transition: all 0.3s ease;
         }
+
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 15px #00ffff33;
+            box-shadow: 0 0 25px var(--neon-rosa-claro);
         }
+
         h2 { 
-            color: #00ffff; 
+            color: var(--neon-rosa); 
             margin-top: 0;
+            text-shadow: 0 0 8px var(--neon-rosa-claro);
         }
+
         a { 
-            color: #00ffff; 
-            text-decoration: none; 
+            color: var(--neon-rosa); 
+            text-decoration: none;
+            transition: all 0.3s ease; 
         }
+
         a:hover { 
-            text-decoration: underline; 
+            color: var(--neon-rosa-claro);
+            text-shadow: 0 0 10px var(--neon-rosa-claro);
         }
+
         .profile-pic { 
-            width: 180px; 
-            border-radius: 8px; 
+            width: 200px; 
+            height: 200px;
+            border-radius: 50%; 
             display: block; 
             margin: 20px auto; 
-            border: 2px solid #00ffff;
+            border: 3px solid var(--neon-rosa);
+            box-shadow: 0 0 30px var(--neon-rosa-claro);
+            transition: all 0.3s ease;
         }
-        ul {
-            padding-left: 20px;
+
+        .profile-pic:hover {
+            transform: rotate(5deg) scale(1.05);
         }
-        li {
-            margin-bottom: 8px;
+
+        .neon-button {
+            background: transparent;
+            border: 2px solid var(--neon-rosa);
+            color: var(--neon-rosa);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .whatsapp-button {
-            background: #25D366;
-            color: white!important;
-            padding: 12px 25px;
-            border-radius: 50px;
-            display: inline-block;
-            margin: 15px 0;
-            transition: 0.3s;
+
+        .neon-button:hover {
+            background: var(--neon-rosa);
+            color: var(--cor-fundo);
+            box-shadow: 0 0 25px var(--neon-rosa-claro);
+            text-decoration: none;
         }
-        .whatsapp-button:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-        }
-        .contact-section {
+
+        .music-list {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            counter-reset: music-counter;
         }
+
+        .music-list li {
+            padding: 15px;
+            background: #1a1a1a;
+            border: 1px solid var(--neon-rosa);
+            border-radius: 5px;
+            position: relative;
+            counter-increment: music-counter;
+        }
+
+        .music-list li::before {
+            content: counter(music-counter);
+            color: var(--neon-rosa);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            font-size: 2em;
+            color: var(--neon-rosa);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--neon-rosa-claro);
+            transform: scale(1.2);
+        }
+
         .qr-code {
             width: 180px;
-            border: 2px solid #00ffff;
+            border: 3px solid var(--neon-rosa);
             padding: 10px;
             background: white;
             margin: 0 auto;
-        }
-        @media (max-width: 600px) {
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-        }
-    
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        body {
-            padding-top: 100px;
+            box-shadow: 0 0 20px var(--neon-rosa-claro);
         }
 
         .rays {
@@ -108,28 +174,71 @@
             justify-content: center;
             gap: 10px;
             height: 40px;
-            margin-top: 40px;
+            margin: 40px 0;
         }
+
         .ray {
             width: 10px;
             height: 100%;
             animation: pulse 1.5s infinite ease-in-out;
+            background: var(--neon-rosa);
         }
-        .ray:nth-child(1) { background: cyan; }
-        .ray:nth-child(2) { background: hotpink; animation-delay: 0.3s; }
-        .ray:nth-child(3) { background: lime; animation-delay: 0.6s; }
 
         @keyframes pulse {
             0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(2); }
+            50% { transform: scaleY(2); opacity: 0.8; }
         }
 
-</style>
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin-top: 120px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Efeito de digitação */
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--neon-rosa);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3s steps(40) 1s 1 normal both;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Efeito de glitch no header */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px var(--neon-rosa); }
+            20% { text-shadow: -2px -2px #0ff; }
+            40% { text-shadow: 2px -2px #ff0; }
+            60% { text-shadow: -2px 2px #0f0; }
+            80% { text-shadow: 2px 2px #f0f; }
+            100% { text-shadow: -2px -2px var(--neon-rosa); }
+        }
+
+        header h1 {
+            animation: glitch 2s infinite;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Victor Manuel Nunes (Blan)</h1>
-        <p>Artista, Editor de Vídeo, Compositor</p>
+        <h1 class="typewriter">Victor Manuel Nunes (Blan)</h1>
+        <p>Artista Digital ✦ Editor ✦ Compositor</p>
     </header>
 
     <div class="container">
@@ -142,25 +251,33 @@
 
         <div class="section">
             <h2>Habilidades</h2>
-            <ul>
-                <li>Construção Civil</li>
-                <li>Atendimento em Supermercado</li>
-                <li>Edição de Vídeos (CapCut, InShot)</li>
-                <li>Redação Criativa</li>
-                <li>Composição Musical e Canto</li>
-            </ul>
+            <div class="skills-grid">
+                <div class="neon-button">Construção Civil</div>
+                <div class="neon-button">Edição de Vídeo</div>
+                <div class="neon-button">Composição Musical</div>
+                <div class="neon-button">Redação Criativa</div>
+                <div class="neon-button">Gestão em Saúde</div>
+            </div>
         </div>
 
         <div class="section">
-            <h2>Músicas e Conteúdo</h2>
-            <p>Siga meu trabalho artístico no Instagram: <br>
-            <a href="https://www.instagram.com/core_blan?utm_source=qr&igsh=enF6NzVkdmVjc2d5" target="_blank">@core_blan</a></p>
+            <h2>Conteúdo Digital</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/core_blan" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:victormanoel1821698@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://zaplink.app/page/5181ys" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
 
-        
         <div class="section">
-            <h2>Minhas Músicas</h2>
-            <ol>
+            <h2>Discografia</h2>
+            <ol class="music-list">
                 <li>Ele é Jesus</li>
                 <li>Convite 19</li>
                 <li>Sinto Falta</li>
@@ -179,46 +296,43 @@
             </ol>
         </div>
 
-
-<div class="section contact-section">
+        <div class="section contact-section">
             <div class="qr-container">
                 <img src="qrcode-whatsapp.png" alt="QR Code WhatsApp" class="qr-code">
-                <p style="text-align: center; font-size: 0.9em;">Escaneie para contato direto</p>
+                <p style="text-align: center; font-size: 0.9em;">Escaneie para conexão direta</p>
             </div>
             
             <div class="contact-info">
-                <h2>Contato</h2>
-                <p>Email: <a href="mailto:victormanoel1821698@gmail.com">victormanoel1821698@gmail.com</a></p>
-                <a href="https://zaplink.app/page/5181ys?new_signup=true" class="whatsapp-button" target="_blank">
-                    📱 Conversar pelo WhatsApp
+                <h2>Canais de Contato</h2>
+                <a href="https://zaplink.app/page/5181ys" class="neon-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Direto
+                </a>
+                <a href="mailto:victormanoel1821698@gmail.com" class="neon-button">
+                    <i class="fas fa-envelope"></i> Email Profissional
                 </a>
             </div>
         </div>
     </div>
 
-    <script src="scripts/analytics.js"></script>
-
-
-    </div>
-</div>
-
-
     <footer>
-      
-    <div style="text-align: center; margin-top: 40px;">
-        <video width="240" autoplay muted loop>
-            <source src="pato_brilhante.mp4" type="video/mp4">
-            Seu navegador não suporta vídeo em HTML5.
-        </video>
-    </div>
+        <div class="video-container">
+            <video width="280" autoplay muted loop class="neon-border">
+                <source src="pato_brilhante.mp4" type="video/mp4">
+            </video>
+        </div>
 
-<div class="rays">
-        <div class="ray"></div>
-        <div class="ray"></div>
-        <div class="ray"></div>
-      </div>
-      <p style="text-align: center; font-size: 12px; padding: 10px;">© 2025 Coreblan. Todos os direitos reservados.</p>
+        <div class="rays">
+            <div class="ray"></div>
+            <div class="ray" style="animation-delay: 0.2s"></div>
+            <div class="ray" style="animation-delay: 0.4s"></div>
+        </div>
+        
+        <p style="text-align: center; font-size: 12px; padding: 20px;">
+            © 2025 Coreblan. Todos os direitos reservados.<br>
+            <span style="color: var(--neon-rosa);">Desenvolvido com ♡ por Blan</span>
+        </p>
     </footer>
 
+    <script src="scripts/analytics.js"></script>
 </body>
 </html>
